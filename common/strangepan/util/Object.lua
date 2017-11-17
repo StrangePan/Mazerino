@@ -1,4 +1,4 @@
-require "strangepan.util.functions"
+require "strangepan.util.type"
 
 Object = {}
 Object.__index = Object
@@ -43,5 +43,5 @@ end
 -- Return: `true` if this object is a subclass of the supplied object.
 --
 function Object:instanceOf(other)
-  return instanceOf(self, other)
+  return checkType(self, other)
 end
