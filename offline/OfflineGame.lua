@@ -65,5 +65,4 @@ function Class:setUpLevel()
       self.camera:jumpToSubject(entity)
     end
   end
-
 end

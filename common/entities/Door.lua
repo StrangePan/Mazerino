@@ -40,6 +40,7 @@ end
 
 function Door:setOpen(open)
   self.open = assertBoolean(open)
+  self.passable = self.open
   return self
 end
 

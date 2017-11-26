@@ -1,5 +1,7 @@
 require "strangepan.secretary.PhysObject"
 require "Color"
+require "strangepan.util.type"
+local Door = require "entities.Door"
 local translation = require "mazerino.util.translation"
 
 Switch = buildClass(PhysObject)
@@ -19,11 +21,29 @@ end
 function Switch:activate()
   self.active = true
   self.activeTimer = 300
+
+  local x, y = self:getPosition()
+  x = x - 2
+  local collisions = self.secretary:getCollisions(y, x + 1, y + 1, x)
+  for _,entity in ipairs(collisions) do
+    if checkType(entity, Door) then
+      entity:setOpen(true)
+    end
+  end
 end
 
 function Switch:deactivate()
   self.active = false
   self.activeTimer = 0
+
+  local x, y = self:getPosition()
+  x = x - 2
+  local collisions = self.secretary:getCollisions(y, x + 1, y + 1, x)
+  for _,entity in ipairs(collisions) do
+    if checkType(entity, Door) then
+      entity:setOpen(false)
+    end
+  end
 end
 
 function Switch:registerWithSecretary(secretary)

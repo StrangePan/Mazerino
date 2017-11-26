@@ -131,7 +131,7 @@ function Actor:tryMove(direction, force)
     local collisions = secretary:getCollisions(t, r, b, l, Wall)
 
     -- Cancel jump if we would collide with a wall
-    if table.getn(collisions) > 0 then
+    if table.getn(collisions) > 0 and not collisions[1].passable then
       collisions[1]:bump(direction)
       self:bump(direction)
       return false
