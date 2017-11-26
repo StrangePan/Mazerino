@@ -1,7 +1,7 @@
 require "strangepan.util.class"
 require "strangepan.util.type"
 require "entities.Player"
-require "entities.Direction"
+local Direction = require "mazerino.util.direction"
 
 PlayerController = buildClass()
 local Class = PlayerController

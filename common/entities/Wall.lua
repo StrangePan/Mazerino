@@ -1,6 +1,6 @@
 require "strangepan.util.class"
-require "entities.Direction"
 require "strangepan.secretary.PhysObject"
+local Direction = require "mazerino.util.direction"
 local translation = require "mazerino.util.translation"
 
 Wall = buildClass(PhysObject)

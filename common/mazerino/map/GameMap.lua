@@ -3,18 +3,33 @@ require 'strangepan.util.type'
 require 'entities.Player'
 require 'entities.Switch'
 require 'entities.Wall'
+local Door = require 'entities.Door'
+local Orientation = require 'mazerino.util.orientation'
+
 local GameMap = buildClass()
 
 -- Instantiates an entity of the given type at the given game map coordinates.
 local function createEntity(code, x, y)
-  if code == "1" then
+  if code == '1' then
     return Wall(x, y)
-  elseif code == "2" then
+  elseif code == '2' then
     local player = Player()
     player:setPosition(x, y)
     return player
-  elseif code == "3" then
+  elseif code == '3' then
     return Switch(x, y)
+  elseif code == '4' then
+    local door = Door()
+    door:setOrientation(Orientation.HORIZONTAL)
+    door:setPosition(x, y)
+    door:setSize(1, 1)
+    return door
+  elseif code == '5' then
+    local door = Door()
+    door:setOrientation(Orientation.VERTICAL)
+    door:setPosition(x, y)
+    door:setSize(1, 1)
+    return door
   end
   return nil
 end
